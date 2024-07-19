@@ -3,47 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Spring boot Websocket Chat Application</title>
+    <link rel="stylesheet" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-
-    <div id="username-page">
-        <div class="username-page.container">
-            <h1 class="title">Type your username to enter the chatroom</h1>
-            <form id="usernameForm" name="usernameForm">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="accent username-submit">Start Chatting</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="chat-page" class="hidden">
-        <div class="chat-container">
-            <div class="chat-header">
-                <h2>Spring WebSocket Chat Demo - by Jatin</h2>
-            </div>
-            <div class="connecting">
-                Connecting...
-            </div>
-            <ul id="messageArea">
-
-            </ul>
-            <form id="messageForm" name="messageForm">
-                <div class="form-group">
-                    <div class="input-group clearfix">
-                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-context" />
-                        <button type="submit" class="primary">Send</button>
+    <section class="vh-100" id="username-page">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                        <div class="card-body p-5 text-center">
+                            <h3 class="mb-1">Type your username to enter the chatroom</h3>
+                            <hr class="my-4">
+                            <form id="usernameForm" name="usernameForm">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="name" class="form-control form-control-lg" placeholder="Username" />
+                                </div>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Start Chatting</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
+    </section>
+    <section id="chat-page" class="d-none">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-lg-6 col-xl-6">
+                    <div class="card p-3 chat-container">
+                        <div class="chat-header">
+                            <h3>Welcome! <span id="username"></span></h3>
+                        </div>
+                        <ul class="message-block my-3 text-white" id="messageArea">
+                        </ul>
+                        <form id="messageForm" name="messageForm">
+                            <div class="chat-footer text-muted d-flex justify-content-start align-items-center p-3">
+                            <div class="input-group mb-0">
+                                <input type="text" id="message" placeholder="Type a message..." class="form-control me-2"/>
+                                <button class="btn btn-light btn-lg" type="submit">Send</button>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
 
+                </div>
 
+            </div>
+
+        </div>
+    </section>
     <script src="/webjars/sockjs-client/1.5.1/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/2.3.4/stomp.min.js"></script>
     <script src="/js/main.js"></script>
